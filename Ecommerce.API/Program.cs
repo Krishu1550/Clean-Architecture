@@ -21,10 +21,10 @@ builder.Services.AddDbContext<ECommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Host.UseSerilog((context, configuration) => configuration
-    .ReadFrom.Configuration(context.Configuration)
-    //  .Enrich.FromLogContext()
-    .WriteTo.Console());
-   // .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day));
+    .ReadFrom.Configuration(context.Configuration));
+//  .Enrich.FromLogContext()
+// .WriteTo.Console());
+// .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day));
 
 builder.Services.AddScoped<IProductServices, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
